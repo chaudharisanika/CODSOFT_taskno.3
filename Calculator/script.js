@@ -20,6 +20,10 @@ const btn0 = document.querySelector("#btn0")
 const btnmu = document.querySelector("#btnmu")
 
 const btnr = document.querySelector("#btnr")
+const h1 = document.querySelector("h1")
+
+// const calc = document.querySelector("calculator")
+const calcn = document.querySelector(".calculatorn")
 
 
 function clearScreen() {
@@ -27,7 +31,19 @@ function clearScreen() {
 }
 function calculate() {
     var p = result.value;
-    var q = eval(p);
+
+    try {
+        var q = eval(p); 
+    } catch (e) {
+        if (e instanceof SyntaxError) {
+            // alert("Wrong Syntax Please try again");
+            h1.innerText="Wrong Syntax try again"
+            document.getElementById("error").className = "calcn"; 
+        } else {
+            throw e;
+        }
+    }
+   
     result.value = q;
 }
 
